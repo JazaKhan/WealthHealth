@@ -6,7 +6,7 @@ public class Expense {
     private String expenseName;
     private double expenseAmount;
 
-    // REQUIRES: expenseName has a non-length
+    // REQUIRES: expenseName has a non-zero length.
     // EFFECTS: Name of the expense task is set to expenseName, and the amount of
     // expense is set to expenseAmount.
     public Expense(String expenseName, double expenseAmount) {
