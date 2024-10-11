@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import model.Incomes.Income;
+
 public class TestExpensesList {
     private ExpensesList testExpensesList;
 
@@ -132,6 +134,32 @@ public class TestExpensesList {
         assertEquals(80, testExpensesList.getExpense(expense1).getExpenseAmount());
         assertEquals(2000, testExpensesList.getExpense(expense2).getExpenseAmount());
 
+    }
+
+    @Test
+    void testViewExpensesList() {
+        Expense expense = new Expense("Food", 200);
+        testExpensesList.addExpense(expense);
+        assertTrue(testExpensesList.contains(expense));
+
+        assertEquals("Food: 200.0", testExpensesList.viewExpensesList());
+    }
+
+    @Test
+    void testViewMultipleExpensesList() {
+        Expense expense = new Expense("Food", 200);
+        Expense expense1 = new Expense("Clothes", 400);
+        Expense expense2 = new Expense("Jewelry", 2000);
+
+        testExpensesList.addExpense(expense);
+        testExpensesList.addExpense(expense1);
+        testExpensesList.addExpense(expense2);
+
+        assertTrue(testExpensesList.contains(expense));
+        assertTrue(testExpensesList.contains(expense1));
+        assertTrue(testExpensesList.contains(expense2));
+
+        assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0", testExpensesList.viewIncomesList());
     }
 
 }
