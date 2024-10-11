@@ -99,6 +99,8 @@ public class FinanceManager {
         System.out.println("What is the amount of your income: ");
         double incomeAmount = this.scanner.nextDouble();
 
+        scanner.nextLine();
+
         Income income = new Income(incomeName, incomeAmount);
         this.incomes.addIncome(income);
         System.out.println("\nNew Income Added");
@@ -112,6 +114,8 @@ public class FinanceManager {
 
         System.out.println("What is the amount of your income: ");
         double expenseAmount = this.scanner.nextDouble();
+
+        scanner.nextLine();
 
         Expense expense = new Expense(expenseName, expenseAmount);
         this.expenses.addExpense(expense);
@@ -127,6 +131,8 @@ public class FinanceManager {
         System.out.println("What is the amount of your income you wish to remove: ");
         double incomeAmount = this.scanner.nextDouble();
 
+        scanner.nextLine();
+
         this.incomes.removeIncome(incomeName, incomeAmount);
         System.out.println("\nIncome removed");
 
@@ -140,6 +146,8 @@ public class FinanceManager {
 
         System.out.println("What is the amount of your expense you wish to remove: ");
         double expenseAmount = this.scanner.nextDouble();
+
+        scanner.nextLine();
 
         this.expenses.removeExpense(expenseName, expenseAmount);
         System.out.println("\nExpense removed");
