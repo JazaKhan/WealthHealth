@@ -71,7 +71,7 @@ public class IncomesList {
     public String viewIncomesList() {
         String list = "";
         for (Income income : incomes) {
-            list += income.getIncomeName() + ": " + income.getIncomeAmount();
+            list += income.getIncomeName() + ": " + income.getIncomeAmount() + " ";
         }
         return list;
     }

@@ -71,7 +71,11 @@ public class ExpensesList {
     // REQUIRES: ExpensesList.size() > 0
     // EFFECTS: The list of expenses is returned to the user to view.
     public String viewExpensesList() {
-        return null;
+        String list = "";
+        for (Expense expense : expenses) {
+            list += expense.getExpenseName() + ": " + expense.getExpenseAmount() + " ";
+        }
+        return list;
     }
 
     public Expense getExpense(Expense expense) {

@@ -142,7 +142,7 @@ public class TestExpensesList {
         testExpensesList.addExpense(expense);
         assertTrue(testExpensesList.contains(expense));
 
-        assertEquals("Food: 200.0", testExpensesList.viewExpensesList());
+        assertEquals("Food: 200.0 ", testExpensesList.viewExpensesList());
     }
 
     @Test
@@ -159,7 +159,7 @@ public class TestExpensesList {
         assertTrue(testExpensesList.contains(expense1));
         assertTrue(testExpensesList.contains(expense2));
 
-        assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0", testExpensesList.viewIncomesList());
+        assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0 ", testExpensesList.viewExpensesList());
     }
 
 }
