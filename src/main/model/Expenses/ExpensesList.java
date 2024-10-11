@@ -2,7 +2,6 @@ package model.Expenses;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 //Represents a list of expenses with titles and amounts (in Dollars).
 public class ExpensesList {
@@ -10,42 +9,46 @@ public class ExpensesList {
 
     // EFFECTS: Initializes an empty list of expenses.
     public ExpensesList() {
-        // stub
+        expenses = new ArrayList<Expense>();
     }
 
     // MODIFIES: this
     // EFFECTS: An expense with a title and an amount (in Dollars) is added to the
     // list of expenses.
     public void addExpense(Expense expense) {
-        // stub
+        this.expenses.add(expense);
     }
 
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of the user's choice is removed from the list.
     public void removeExpense(Expense expense) {
-        // stub
+        this.expenses.remove(expense);
     }
 
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by name.
     public void modifyExpenseName(Expense expense, String updateExpenseName) {
-        // stub
+        expense.setExpenseName(updateExpenseName);
     }
 
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by amount.
     public void modifyExpenseAmount(Expense expense, int updateExpenseAmount) {
-        // stub
+        expense.setExpenseAmount(updateExpenseAmount);
     }
-    
+
     // REQUIRES: ExpensesList.size() > 0
     // EFFECTS: Returns true if ExpensesList contains the given expense, and false
     // if it does not.
     public boolean contains(Expense expense) {
-        return false;
+        if (expenses.contains(expense)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // REQUIRES: ExpensesList.size() > 0
@@ -55,7 +58,7 @@ public class ExpensesList {
     }
 
     public Expense getExpense(Expense expense) {
-        return null;
+        return expense;
     }
 
 }

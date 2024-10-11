@@ -14,6 +14,14 @@ public class Expense {
         this.expenseAmount = expenseAmount;
     }
 
+    public void setExpenseName(String expenseName) {
+        this.expenseName = expenseName;
+    }
+
+    public void setExpenseAmount(double expenseName) {
+        this.expenseAmount = expenseName;
+    }
+
     public String getExpenseName() {
         return this.expenseName;
     }
