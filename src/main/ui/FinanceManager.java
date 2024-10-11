@@ -1,9 +1,9 @@
 package ui;
 
-import model.Incomes.Income;
-import model.Incomes.IncomesList;
-import model.Expenses.Expense;
-import model.Expenses.ExpensesList;
+import model.expenses.Expense;
+import model.expenses.ExpensesList;
+import model.incomes.Income;
+import model.incomes.IncomesList;
 
 import java.util.Scanner;
 
@@ -112,7 +112,7 @@ public class FinanceManager {
         System.out.println("Please enter the title of your expense: ");
         String expenseName = this.scanner.nextLine();
 
-        System.out.println("What is the amount of your income: ");
+        System.out.println("What is the amount of your expense: ");
         double expenseAmount = this.scanner.nextDouble();
 
         scanner.nextLine();
@@ -154,14 +154,14 @@ public class FinanceManager {
 
     }
 
-    //REQUIRES: incomes > 0
-    //MODIFIES: this
-    //EFFECTS: Changes the income name or amount based on user preferences.
-    public void modifyIncome(){
+    // REQUIRES: incomes > 0
+    // MODIFIES: this
+    // EFFECTS: Changes the income name or amount based on user preferences.
+    public void modifyIncome() {
         System.out.println("Would you like to modify by title (input T) or by amount (input A)? ");
         String type = this.scanner.nextLine();
 
-        if (type.equals("T")){
+        if (type.equals("T")) {
             System.out.println("Which title would you like to modify? ");
             String name = this.scanner.nextLine();
 
@@ -171,7 +171,7 @@ public class FinanceManager {
             incomes.modifyIncomeName(name, updatedName);
         }
 
-        if (type.equals("A")){
+        if (type.equals("A")) {
             System.out.println("Which amount would you like to modify? ");
             String amount = this.scanner.nextLine();
             double amountDouble = Double.valueOf(amount);
@@ -184,14 +184,14 @@ public class FinanceManager {
         }
     }
 
-    //REQUIRES: expenses > 0
-    //MODIFIES: this
-    //EFFECTS: Changes the expense name or amount based on user preferences.
-    public void modifyExpense(){
+    // REQUIRES: expenses > 0
+    // MODIFIES: this
+    // EFFECTS: Changes the expense name or amount based on user preferences.
+    public void modifyExpense() {
         System.out.println("Would you like to modify by title (input T) or by amount (input A)? ");
         String type = this.scanner.nextLine();
 
-        if (type.equals("T")){
+        if (type.equals("T")) {
             System.out.println("Which title would you like to modify? ");
             String name = this.scanner.nextLine();
 
@@ -201,7 +201,7 @@ public class FinanceManager {
             expenses.modifyExpenseName(name, updatedName);
         }
 
-        if (type.equals("A")){
+        if (type.equals("A")) {
             System.out.println("Which amount would you like to modify? ");
             String amount = this.scanner.nextLine();
             double amountDouble = Double.valueOf(amount);
@@ -212,7 +212,7 @@ public class FinanceManager {
 
             expenses.modifyExpenseAmount(amountDouble, updatedAmountDouble);
         }
-    }   
+    }
 
     // EFFECTS: Displays the list of incomes.
     public void viewIncomesList() {

@@ -1,4 +1,4 @@
-package model.Incomes;
+package model.incomes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,8 @@ public class IncomesList {
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
-    // EFFECTS: An income of the user's choice is removed from the list using provided name, and amount.
+    // EFFECTS: An income of the user's choice is removed from the list using
+    // provided name, and amount.
     public void removeIncome(String name, double amount) {
         for (Income income : incomes) {
             if (income.getIncomeName().equals(name) && income.getIncomeAmount() == amount) {

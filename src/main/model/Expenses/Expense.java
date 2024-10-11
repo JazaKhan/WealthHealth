@@ -1,4 +1,4 @@
-package model.Expenses;
+package model.expenses;
 
 // Represents a single expense with the title and amount (in Dollars)
 public class Expense {

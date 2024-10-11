@@ -1,9 +1,12 @@
-package model.Incomes;
+package model.incomes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import model.incomes.Income;
+import model.incomes.IncomesList;
 
 public class TestIncomesList {
     private IncomesList testIncomesList;
@@ -60,9 +63,12 @@ public class TestIncomesList {
 
         testIncomesList.removeIncome("Job 1", 3000);
         testIncomesList.removeIncome("Job 2", 400);
+        testIncomesList.removeIncome("Job 3", 400);
+        testIncomesList.removeIncome("Jobb3", 400);
 
         assertFalse(testIncomesList.contains(income));
         assertFalse(testIncomesList.contains(income1));
+        assertTrue(testIncomesList.contains(income2));
         assertTrue(testIncomesList.contains(income2));
     }
 
@@ -93,9 +99,11 @@ public class TestIncomesList {
         testIncomesList.modifyIncomeName("Job 1", "WORK");
         testIncomesList.modifyIncomeName("WORK", "WORK2");
         testIncomesList.modifyIncomeName("Job 2", "WORK3");
+        testIncomesList.modifyIncomeName("Job3", "No Job");
 
         assertEquals("WORK2", testIncomesList.getIncome(income).getIncomeName());
         assertEquals("WORK3", testIncomesList.getIncome(income1).getIncomeName());
+        assertEquals("Job 3", testIncomesList.getIncome(income2).getIncomeName());
         assertEquals("Job 3", testIncomesList.getIncome(income2).getIncomeName());
 
     }
@@ -127,9 +135,11 @@ public class TestIncomesList {
         testIncomesList.modifyIncomeAmount(3000, 10);
         testIncomesList.modifyIncomeAmount(400, 20);
         testIncomesList.modifyIncomeAmount(20, 80);
+        testIncomesList.modifyIncomeAmount(29, 0);
 
         assertEquals(10, testIncomesList.getIncome(income).getIncomeAmount());
         assertEquals(80, testIncomesList.getIncome(income1).getIncomeAmount());
+        assertEquals(2000, testIncomesList.getIncome(income2).getIncomeAmount());
         assertEquals(2000, testIncomesList.getIncome(income2).getIncomeAmount());
 
     }

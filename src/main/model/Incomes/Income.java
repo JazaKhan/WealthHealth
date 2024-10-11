@@ -1,4 +1,4 @@
-package model.Incomes;
+package model.incomes;
 
 // Represents a single income with the title and amount (in Dollars)
 public class Income {

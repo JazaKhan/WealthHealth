@@ -1,9 +1,7 @@
-package model.Expenses;
+package model.expenses;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Incomes.Income;
 
 //Represents a list of expenses with titles and amounts (in Dollars).
 public class ExpensesList {

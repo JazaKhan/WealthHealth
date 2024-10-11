@@ -1,11 +1,12 @@
-package model.Expenses;
+package model.expenses;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Incomes.Income;
+import model.expenses.Expense;
+import model.expenses.ExpensesList;
 
 public class TestExpensesList {
     private ExpensesList testExpensesList;
@@ -62,6 +63,8 @@ public class TestExpensesList {
 
         testExpensesList.removeExpense("Food", 200);
         testExpensesList.removeExpense("Clothes", 400);
+        testExpensesList.removeExpense("Jewelry", 80);
+        testExpensesList.removeExpense("NotJewelry", 2000);
 
         assertFalse(testExpensesList.contains(expense));
         assertFalse(testExpensesList.contains(expense1));
@@ -95,9 +98,11 @@ public class TestExpensesList {
         testExpensesList.modifyExpenseName("Food", "Bills");
         testExpensesList.modifyExpenseName("Clothes", "Utilities");
         testExpensesList.modifyExpenseName("Utilities", "Shoes");
+        testExpensesList.modifyExpenseName("Jewlry", "None");
 
         assertEquals("Bills", testExpensesList.getExpense(expense).getExpenseName());
         assertEquals("Shoes", testExpensesList.getExpense(expense1).getExpenseName());
+        assertEquals("Jewelry", testExpensesList.getExpense(expense2).getExpenseName());
         assertEquals("Jewelry", testExpensesList.getExpense(expense2).getExpenseName());
 
     }
@@ -129,9 +134,11 @@ public class TestExpensesList {
         testExpensesList.modifyExpenseAmount(200, 10);
         testExpensesList.modifyExpenseAmount(400, 20);
         testExpensesList.modifyExpenseAmount(20, 80);
+        testExpensesList.modifyExpenseAmount(200, 0);
 
         assertEquals(10, testExpensesList.getExpense(expense).getExpenseAmount());
         assertEquals(80, testExpensesList.getExpense(expense1).getExpenseAmount());
+        assertEquals(2000, testExpensesList.getExpense(expense2).getExpenseAmount());
         assertEquals(2000, testExpensesList.getExpense(expense2).getExpenseAmount());
 
     }
