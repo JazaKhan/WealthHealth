@@ -133,4 +133,30 @@ public class TestIncomesList {
         assertEquals(2000, testIncomesList.getIncome(income2).getIncomeAmount());
 
     }
+
+    @Test
+    void testViewIncomesList() {
+        Income income = new Income("Job 1", 3000);
+        testIncomesList.addIncome(income);
+        assertTrue(testIncomesList.contains(income));
+
+        assertEquals("Job 1: 3000.0", testIncomesList.viewIncomesList());
+    }
+
+
+    void testViewMultipleIncomesList() {
+        Income income = new Income("Job 1", 3000);
+        Income income1 = new Income("Job 2", 400);
+        Income income2 = new Income("Job 3", 2000);
+
+        testIncomesList.addIncome(income);
+        testIncomesList.addIncome(income1);
+        testIncomesList.addIncome(income2);
+
+        assertTrue(testIncomesList.contains(income));
+        assertTrue(testIncomesList.contains(income1));
+        assertTrue(testIncomesList.contains(income2));
+
+        assertEquals("Job 1: 3000.0 Job 2: 400.0 Job 3: 2000.0", testIncomesList.viewIncomesList());
+    }
 }

@@ -69,7 +69,11 @@ public class IncomesList {
     // REQUIRES: IncomesList.size() > 0
     // EFFECTS: The list of incomes is returned to the user to view.
     public String viewIncomesList() {
-        return null;
+        String list = "";
+        for (Income income : incomes) {
+            list += income.getIncomeName() + ": " + income.getIncomeAmount();
+        }
+        return list;
     }
 
     public Income getIncome(Income income) {
