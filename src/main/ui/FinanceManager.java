@@ -5,8 +5,6 @@ import model.Incomes.IncomesList;
 import model.Expenses.Expense;
 import model.Expenses.ExpensesList;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 //LAB 4 WAS USED TO ASSIST WITH THIS PART.
@@ -152,24 +150,70 @@ public class FinanceManager {
     //MODIFIES: this
     //EFFECTS: Changes the income name or amount based on user preferences.
     public void modifyIncome(){
-        //stub
+        System.out.println("Would you like to modify by title (input T) or by amount (input A)? ");
+        String type = this.scanner.nextLine();
+
+        if (type.equals("T")){
+            System.out.println("Which title would you like to modify? ");
+            String name = this.scanner.nextLine();
+
+            System.out.println("Enter updated title: ");
+            String updatedName = this.scanner.nextLine();
+
+            incomes.modifyIncomeName(name, updatedName);
+        }
+
+        if (type.equals("A")){
+            System.out.println("Which amount would you like to modify? ");
+            String amount = this.scanner.nextLine();
+            double amountDouble = Double.valueOf(amount);
+
+            System.out.println("Enter updated amount: ");
+            String updatedAmount = this.scanner.nextLine();
+            double updatedAmountDouble = Double.valueOf(updatedAmount);
+
+            incomes.modifyIncomeAmount(amountDouble, updatedAmountDouble);
+        }
     }
 
     //REQUIRES: expenses > 0
     //MODIFIES: this
     //EFFECTS: Changes the expense name or amount based on user preferences.
     public void modifyExpense(){
-        //stub
-    }
+        System.out.println("Would you like to modify by title (input T) or by amount (input A)? ");
+        String type = this.scanner.nextLine();
+
+        if (type.equals("T")){
+            System.out.println("Which title would you like to modify? ");
+            String name = this.scanner.nextLine();
+
+            System.out.println("Enter updated title: ");
+            String updatedName = this.scanner.nextLine();
+
+            expenses.modifyExpenseName(name, updatedName);
+        }
+
+        if (type.equals("A")){
+            System.out.println("Which amount would you like to modify? ");
+            String amount = this.scanner.nextLine();
+            double amountDouble = Double.valueOf(amount);
+
+            System.out.println("Enter updated amount: ");
+            String updatedAmount = this.scanner.nextLine();
+            double updatedAmountDouble = Double.valueOf(updatedAmount);
+
+            expenses.modifyExpenseAmount(amountDouble, updatedAmountDouble);
+        }
+    }   
 
     // EFFECTS: Displays the list of incomes.
     public void viewIncomesList() {
-        // stub
+        System.out.println(incomes.viewIncomesList());
     }
 
     // EFFECTS: Displays the list of expenses.
     public void viewExpensesList() {
-        // stub
+        System.out.println(expenses.viewExpensesList());
     }
 
     // MODIFIES: this
