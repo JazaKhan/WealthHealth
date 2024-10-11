@@ -9,7 +9,8 @@ public class Income {
     // EFFECTS: Name of the income is set to incomeName, and the amount of
     // income is set to incomeAmount.
     public Income(String incomeName, double incomeAmount) {
-        // stub
+        this.incomeName = incomeName;
+        this.incomeAmount = incomeAmount;
     }
 
     public void setIncomeName(String incomeName) {

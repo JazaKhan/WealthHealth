@@ -16,7 +16,7 @@ public class TestIncome {
 
     @Test
     void testConstructor() {
-        assertEquals("job 1", incomeTest.getIncomeName());
+        assertEquals("Job 1", incomeTest.getIncomeName());
         assertEquals(3000, incomeTest.getIncomeAmount());
     }
 }
