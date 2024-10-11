@@ -128,9 +128,9 @@ public class TestIncomesList {
         testIncomesList.modifyIncomeAmount(income1, 20);
         testIncomesList.modifyIncomeAmount(income1, 80);
 
-        assertEquals(10, testIncomesList.getIncome(income).getIncomeName());
-        assertEquals(80, testIncomesList.getIncome(income1).getIncomeName());
-        assertEquals(2000, testIncomesList.getIncome(income2).getIncomeName());
+        assertEquals(10, testIncomesList.getIncome(income).getIncomeAmount());
+        assertEquals(80, testIncomesList.getIncome(income1).getIncomeAmount());
+        assertEquals(2000, testIncomesList.getIncome(income2).getIncomeAmount());
 
     }
 }
