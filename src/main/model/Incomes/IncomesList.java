@@ -21,23 +21,38 @@ public class IncomesList {
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
-    // EFFECTS: An income of the user's choice is removed from the list.
-    public void removeIncome(Income income) {
-        this.incomes.remove(income);
+    // EFFECTS: An income of the user's choice is removed from the list using provided name, and amount.
+    public void removeIncome(String name, double amount) {
+        for (Income income : incomes) {
+            if (income.getIncomeName().equals(name) && income.getIncomeAmount() == amount) {
+                incomes.remove(income);
+                break;
+            }
+        }
     }
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An income of user's choice is updated by name.
-    public void modifyIncomeName(Income income, String updateIncomeName) {
-        income.setIncomeName(updateIncomeName);
+    public void modifyIncomeName(String name, String updateIncomeName) {
+        for (Income income : incomes) {
+            if (income.getIncomeName().equals(name)) {
+                income.setIncomeName(updateIncomeName);
+                break;
+            }
+        }
     }
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An income of user's choice is updated by amount.
-    public void modifyIncomeAmount(Income income, int updateIncomeAmount) {
-        income.setIncomeAmount(updateIncomeAmount);
+    public void modifyIncomeAmount(double amount, double updateIncomeAmount) {
+        for (Income income : incomes) {
+            if (income.getIncomeAmount() == amount) {
+                income.setIncomeAmount(updateIncomeAmount);
+                break;
+            }
+        }
     }
 
     // REQUIRES: IncomesList.size() > 0
@@ -60,4 +75,5 @@ public class IncomesList {
     public Income getIncome(Income income) {
         return income;
     }
+
 }

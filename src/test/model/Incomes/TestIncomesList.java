@@ -40,7 +40,7 @@ public class TestIncomesList {
         testIncomesList.addIncome(income);
         assertTrue(testIncomesList.contains(income));
 
-        testIncomesList.removeIncome(income);
+        testIncomesList.removeIncome("Job 1", 3000);
         assertFalse(testIncomesList.contains(income));
     }
 
@@ -58,8 +58,8 @@ public class TestIncomesList {
         assertTrue(testIncomesList.contains(income1));
         assertTrue(testIncomesList.contains(income2));
 
-        testIncomesList.removeIncome(income);
-        testIncomesList.removeIncome(income1);
+        testIncomesList.removeIncome("Job 1", 3000);
+        testIncomesList.removeIncome("Job 2", 400);
 
         assertFalse(testIncomesList.contains(income));
         assertFalse(testIncomesList.contains(income1));
@@ -72,7 +72,7 @@ public class TestIncomesList {
         testIncomesList.addIncome(income);
         assertTrue(testIncomesList.contains(income));
 
-        testIncomesList.modifyIncomeName(income, "WORK");
+        testIncomesList.modifyIncomeName("Job 1", "WORK");
         assertEquals("WORK", testIncomesList.getIncome(income).getIncomeName());
     }
 
@@ -90,11 +90,11 @@ public class TestIncomesList {
         assertTrue(testIncomesList.contains(income1));
         assertTrue(testIncomesList.contains(income2));
 
-        testIncomesList.modifyIncomeName(income, "WORK");
-        testIncomesList.modifyIncomeName(income1, "WORK2");
-        testIncomesList.modifyIncomeName(income1, "WORK3");
+        testIncomesList.modifyIncomeName("Job 1", "WORK");
+        testIncomesList.modifyIncomeName("WORK", "WORK2");
+        testIncomesList.modifyIncomeName("Job 2", "WORK3");
 
-        assertEquals("WORK", testIncomesList.getIncome(income).getIncomeName());
+        assertEquals("WORK2", testIncomesList.getIncome(income).getIncomeName());
         assertEquals("WORK3", testIncomesList.getIncome(income1).getIncomeName());
         assertEquals("Job 3", testIncomesList.getIncome(income2).getIncomeName());
 
@@ -106,7 +106,7 @@ public class TestIncomesList {
         testIncomesList.addIncome(income);
         assertTrue(testIncomesList.contains(income));
 
-        testIncomesList.modifyIncomeAmount(income, 10);
+        testIncomesList.modifyIncomeAmount(3000, 10);
         assertEquals(10, testIncomesList.getIncome(income).getIncomeAmount());
     }
 
@@ -124,9 +124,9 @@ public class TestIncomesList {
         assertTrue(testIncomesList.contains(income1));
         assertTrue(testIncomesList.contains(income2));
 
-        testIncomesList.modifyIncomeAmount(income, 10);
-        testIncomesList.modifyIncomeAmount(income1, 20);
-        testIncomesList.modifyIncomeAmount(income1, 80);
+        testIncomesList.modifyIncomeAmount(3000, 10);
+        testIncomesList.modifyIncomeAmount(400, 20);
+        testIncomesList.modifyIncomeAmount(20, 80);
 
         assertEquals(10, testIncomesList.getIncome(income).getIncomeAmount());
         assertEquals(80, testIncomesList.getIncome(income1).getIncomeAmount());
