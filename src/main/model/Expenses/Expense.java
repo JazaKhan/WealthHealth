@@ -18,8 +18,8 @@ public class Expense {
         this.expenseName = expenseName;
     }
 
-    public void setExpenseAmount(double expenseName) {
-        this.expenseAmount = expenseName;
+    public void setExpenseAmount(double expenseAmount) {
+        this.expenseAmount = expenseAmount;
     }
 
     public String getExpenseName() {

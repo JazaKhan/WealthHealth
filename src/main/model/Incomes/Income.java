@@ -12,12 +12,20 @@ public class Income {
         // stub
     }
 
+    public void setIncomeName(String incomeName) {
+        this.incomeName = incomeName;
+    }
+
+    public void setIncomeAmount(double incomeAmount) {
+        this.incomeAmount = incomeAmount;
+    }
+
     public String getIncomeName() {
-        return null;
+        return this.incomeName;
     }
 
     public double getIncomeAmount() {
-        return 0;
+        return this.incomeAmount;
     }
 
 }
