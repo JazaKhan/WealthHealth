@@ -19,52 +19,147 @@ public class FinanceManager {
 
     // EFFECTS: prints a welcome messae and manages program execution.
     public FinanceManager() {
-        // stub
+        init();
+
+        System.out.println("Welcome to WealthHealth!");
+
+        while (this.isProgramRunning) {
+            excecuteProgram();
+        }
     }
 
     // REQUIRES: incomeName has a non-zero length.
     // EFFECTS: initializes fields (scanner, isProgramRunning, incomes, expenses)
     public void init() {
-        // stub
+        this.scanner = new Scanner(System.in);
+        this.isProgramRunning = true;
+        this.incomes = new IncomesList();
+        this.expenses = new ExpensesList();
     }
 
     // EFFECTS: Display and then process user choices for the main menu.
     public void excecuteProgram() {
-        // stub
+        displayMenu();
+        String input = this.scanner.nextLine();
+        processMenuCommands(input);
     }
 
     // EFFECTS: Displays a list of commands that the user can choose from
     public void displayMenu() {
-        // stub
+        System.out.println("Select one of the following options: \n");
+        System.out.println("1. Add Income");
+        System.out.println("2. Add Expense");
+        System.out.println("3. Remove Income");
+        System.out.println("4. Remove Expense");
+        System.out.println("5. Modify Income");
+        System.out.println("6. Modify Expense");
+        System.out.println("7. View List of Incomes");
+        System.out.println("8. View List of Expenses");
+        System.out.println("9. Quit");
     }
 
     // EFFECTS: Use the user input to execute appropriate response
     public void processMenuCommands(String input) {
-        // stub
+        switch (input) {
+            case "1":
+                addIncome();
+                break;
+            case "2":
+                addExpense();
+                break;
+            case "3":
+                removeIncome();
+                break;
+            case "4":
+                removeExpense();
+                break;
+            case "5":
+                modifyIncome();
+                break;
+            case "6":
+                modifyExpense();
+            case "7":
+                viewIncomesList();
+                break;
+            case "8":
+                viewExpensesList();
+                break;
+            case "9":
+                endProgram();
+                break;
+            default:
+                System.out.println("Invalid Entry, try again!");
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new income to the list of incomes
     public void addIncome() {
-        // stub
+        System.out.println("Please enter the title of your income: ");
+        String incomeName = this.scanner.nextLine();
+
+        System.out.println("What is the amount of your income: ");
+        double incomeAmount = this.scanner.nextDouble();
+
+        Income income = new Income(incomeName, incomeAmount);
+        this.incomes.addIncome(income);
+        System.out.println("\nNew Income Added");
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new expense to the list of expenses
     public void addExpense() {
-        // stub
+        System.out.println("Please enter the title of your expense: ");
+        String expenseName = this.scanner.nextLine();
+
+        System.out.println("What is the amount of your income: ");
+        double expenseAmount = this.scanner.nextDouble();
+
+        Expense expense = new Expense(expenseName, expenseAmount);
+        this.expenses.addExpense(expense);
+        System.out.println("\nNew Expense Added");
     }
 
     // MODIFIES: this
     // EFFECTS: removes an income from the list of incomes
     public void removeIncome() {
-        // stub
+        System.out.println("Please enter the title of the income you wish to remove: ");
+        String incomeName = this.scanner.nextLine();
+
+        System.out.println("What is the amount of your income you wish to remove: ");
+        double incomeAmount = this.scanner.nextDouble();
+
+        this.incomes.removeIncome(incomeName, incomeAmount);
+        System.out.println("\nIncome removed");
+
     }
 
     // MODIFIES: this
     // EFFECTS: removes an expense from the list of expenses
     public void removeExpense() {
-        // stub
+        System.out.println("Please enter the title of the expense you wish to remove: ");
+        String expenseName = this.scanner.nextLine();
+
+        System.out.println("What is the amount of your expense you wish to remove: ");
+        double expenseAmount = this.scanner.nextDouble();
+
+        this.expenses.removeExpense(expenseName, expenseAmount);
+        System.out.println("\nExpense removed");
+
+    }
+
+    //REQUIRES: incomes > 0
+    //MODIFIES: this
+    //EFFECTS: Changes the income name or amount based on user preferences.
+    public void modifyIncome(){
+        //stub
+    }
+
+    //REQUIRES: expenses > 0
+    //MODIFIES: this
+    //EFFECTS: Changes the expense name or amount based on user preferences.
+    public void modifyExpense(){
+        //stub
     }
 
     // EFFECTS: Displays the list of incomes.
@@ -80,7 +175,8 @@ public class FinanceManager {
     // MODIFIES: this
     // EFFECTS: Kills the program and prints a goodbye message
     public void endProgram() {
-        //stub
+        System.out.println("Thank you for tracking your wealth!");
+        this.isProgramRunning = false;
     }
 
 }
