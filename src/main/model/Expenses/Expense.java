@@ -10,15 +10,16 @@ public class Expense {
     // EFFECTS: Name of the expense task is set to expenseName, and the amount of
     // expense is set to expenseAmount.
     public Expense(String expenseName, double expenseAmount) {
-        // stub
+        this.expenseName = expenseName;
+        this.expenseAmount = expenseAmount;
     }
 
     public String getExpenseName() {
-        return null;
+        return this.expenseName;
     }
 
     public double getExpenseAmount() {
-        return 0;
+        return this.expenseAmount;
     }
 
 }
