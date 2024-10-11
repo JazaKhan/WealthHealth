@@ -128,9 +128,9 @@ public class TestExpensesList {
         testExpensesList.modifyExpenseAmount(expense1, 20);
         testExpensesList.modifyExpenseAmount(expense1, 80);
 
-        assertEquals(10, testExpensesList.getExpense(expense).getExpenseName());
-        assertEquals(80, testExpensesList.getExpense(expense1).getExpenseName());
-        assertEquals(2000, testExpensesList.getExpense(expense2).getExpenseName());
+        assertEquals(10, testExpensesList.getExpense(expense).getExpenseAmount());
+        assertEquals(80, testExpensesList.getExpense(expense1).getExpenseAmount());
+        assertEquals(2000, testExpensesList.getExpense(expense2).getExpenseAmount());
 
     }
 
