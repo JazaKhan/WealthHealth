@@ -2,6 +2,7 @@ package model.Incomes;
 
 import java.util.List;
 
+
 //Represents a list of incomes with titles and amounts (in Dollars).
 public class IncomesList {
     private List<Income> incomes;
@@ -20,19 +21,39 @@ public class IncomesList {
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
-    // EFFECTS: An income of the user's choice is removed from the list of
-    // incomes using the title provided.
-    public void removeIncome(String removeTitle) {
+    // EFFECTS: An income of the user's choice is removed from the list.
+    public void removeIncome(Income income) {
         // stub
     }
 
     // REQUIRES: IncomesList.size() > 0
     // MODIFIES: this
-    // EFFECTS: An income of user's choice is modified by either title, or income
-    // amount,
-    // or both using the title and amount provided.
-    public void modifyIncome(String updateIncomeName, int updateIncomeAmount) {
+    // EFFECTS: An income of user's choice is updated by name.
+    public void modifyIncomeName(Income income, String updateIncomeName) {
         // stub
     }
 
+    // REQUIRES: IncomesList.size() > 0
+    // MODIFIES: this
+    // EFFECTS: An income of user's choice is updated by amount.
+    public void modifyIncomeAmount(Income income, int updateIncomeAmount) {
+        // stub
+    }
+    
+    // REQUIRES: IncomesList.size() > 0
+    // EFFECTS: Returns true if IncomesList contains the given income, and false
+    // if it does not.
+    public boolean contains(Income income) {
+        return false;
+    }
+
+    // REQUIRES: IncomesList.size() > 0
+    // EFFECTS: The list of incomes is returned to the user to view.
+    public String viewIncomesList() {
+        return null;
+    }
+
+    public Income getIncome(Income income) {
+        return null;
+    }
 }

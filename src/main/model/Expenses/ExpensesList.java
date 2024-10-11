@@ -27,20 +27,20 @@ public class ExpensesList {
         // stub
     }
 
-    // REQUIRES: ExpenseList.size() > 0
+    // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by name.
     public void modifyExpenseName(Expense expense, String updateExpenseName) {
         // stub
     }
 
-    // REQUIRES: ExpenseList.size() > 0
+    // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by amount.
     public void modifyExpenseAmount(Expense expense, int updateExpenseAmount) {
         // stub
     }
-
+    
     // REQUIRES: ExpensesList.size() > 0
     // EFFECTS: Returns true if ExpensesList contains the given expense, and false
     // if it does not.
