@@ -3,6 +3,8 @@ package model.Expenses;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Incomes.Income;
+
 //Represents a list of expenses with titles and amounts (in Dollars).
 public class ExpensesList {
     private List<Expense> expenses;
@@ -22,22 +24,37 @@ public class ExpensesList {
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of the user's choice is removed from the list.
-    public void removeExpense(Expense expense) {
-        this.expenses.remove(expense);
+    public void removeExpense(String name, double amount) {
+        for (Expense expense : expenses) {
+            if (expense.getExpenseName().equals(name) && expense.getExpenseAmount() == amount) {
+                expenses.remove(expense);
+                break;
+            }
+        }
     }
 
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by name.
-    public void modifyExpenseName(Expense expense, String updateExpenseName) {
-        expense.setExpenseName(updateExpenseName);
+    public void modifyExpenseName(String name, String updateExpenseName) {
+        for (Expense expense : expenses) {
+            if (expense.getExpenseName().equals(name)) {
+                expense.setExpenseName(updateExpenseName);
+                break;
+            }
+        }
     }
 
     // REQUIRES: ExpensesList.size() > 0
     // MODIFIES: this
     // EFFECTS: An expense of user's choice is updated by amount.
-    public void modifyExpenseAmount(Expense expense, int updateExpenseAmount) {
-        expense.setExpenseAmount(updateExpenseAmount);
+    public void modifyExpenseAmount(double amount, double updateExpenseAmount) {
+        for (Expense expense : expenses) {
+            if (expense.getExpenseAmount() == amount) {
+                expense.setExpenseAmount(updateExpenseAmount);
+                break;
+            }
+        }
     }
 
     // REQUIRES: ExpensesList.size() > 0

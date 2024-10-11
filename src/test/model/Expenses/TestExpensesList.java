@@ -40,7 +40,7 @@ public class TestExpensesList {
         testExpensesList.addExpense(expense);
         assertTrue(testExpensesList.contains(expense));
 
-        testExpensesList.removeExpense(expense);
+        testExpensesList.removeExpense("Food", 200);
         assertFalse(testExpensesList.contains(expense));
     }
 
@@ -58,8 +58,8 @@ public class TestExpensesList {
         assertTrue(testExpensesList.contains(expense1));
         assertTrue(testExpensesList.contains(expense2));
 
-        testExpensesList.removeExpense(expense);
-        testExpensesList.removeExpense(expense1);
+        testExpensesList.removeExpense("Food", 200);
+        testExpensesList.removeExpense("Clothes", 400);
 
         assertFalse(testExpensesList.contains(expense));
         assertFalse(testExpensesList.contains(expense1));
@@ -72,7 +72,7 @@ public class TestExpensesList {
         testExpensesList.addExpense(expense);
         assertTrue(testExpensesList.contains(expense));
 
-        testExpensesList.modifyExpenseName(expense, "Clothes");
+        testExpensesList.modifyExpenseName("Food", "Clothes");
         assertEquals("Clothes", testExpensesList.getExpense(expense).getExpenseName());
     }
 
@@ -90,9 +90,9 @@ public class TestExpensesList {
         assertTrue(testExpensesList.contains(expense1));
         assertTrue(testExpensesList.contains(expense2));
 
-        testExpensesList.modifyExpenseName(expense, "Bills");
-        testExpensesList.modifyExpenseName(expense1, "Utilities");
-        testExpensesList.modifyExpenseName(expense1, "Shoes");
+        testExpensesList.modifyExpenseName("Food", "Bills");
+        testExpensesList.modifyExpenseName("Clothes", "Utilities");
+        testExpensesList.modifyExpenseName("Utilities", "Shoes");
 
         assertEquals("Bills", testExpensesList.getExpense(expense).getExpenseName());
         assertEquals("Shoes", testExpensesList.getExpense(expense1).getExpenseName());
@@ -106,7 +106,7 @@ public class TestExpensesList {
         testExpensesList.addExpense(expense);
         assertTrue(testExpensesList.contains(expense));
 
-        testExpensesList.modifyExpenseAmount(expense, 10);
+        testExpensesList.modifyExpenseAmount(200, 10);
         assertEquals(10, testExpensesList.getExpense(expense).getExpenseAmount());
     }
 
@@ -124,9 +124,9 @@ public class TestExpensesList {
         assertTrue(testExpensesList.contains(expense1));
         assertTrue(testExpensesList.contains(expense2));
 
-        testExpensesList.modifyExpenseAmount(expense, 10);
-        testExpensesList.modifyExpenseAmount(expense1, 20);
-        testExpensesList.modifyExpenseAmount(expense1, 80);
+        testExpensesList.modifyExpenseAmount(200, 10);
+        testExpensesList.modifyExpenseAmount(400, 20);
+        testExpensesList.modifyExpenseAmount(20, 80);
 
         assertEquals(10, testExpensesList.getExpense(expense).getExpenseAmount());
         assertEquals(80, testExpensesList.getExpense(expense1).getExpenseAmount());
