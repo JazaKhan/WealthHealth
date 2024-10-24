@@ -5,9 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.incomes.Income;
-import model.incomes.IncomesList;
-
 public class TestIncomesList {
     private IncomesList testIncomesList;
 
