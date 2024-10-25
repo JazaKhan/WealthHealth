@@ -40,23 +40,23 @@ public class JsonReader {
     }
 
     // EFFECTS: parses ExpensesList from JSON object and returns it
-    private ExpensesList parseExpensesList(JSONObject jsonObject) {
+    private ExpensesList recreateExpensesList(JSONObject jsonObject) {
        //stub
     }
 
     // EFFECTS: parses IncomesList from JSON object and returns it
-    private IncomesList parseIncomesList(JSONObject jsonObject) {
+    private IncomesList recreateIncomesList(JSONObject jsonObject) {
         //stub
      }
 
     // MODIFIES: eList
-    // EFFECTS: parses thingies from JSON object and adds them to ExpensesList
+    // EFFECTS: parses Expenses from JSON object and adds them to ExpensesList
     private void addExpenses(ExpensesList eList, JSONObject jsonObject) {
         //stub
     }
 
     // MODIFIES: iList
-    // EFFECTS: parses thingy from JSON object and adds it to IncomesList
+    // EFFECTS: parses Incomes from JSON object and adds it to IncomesList
     private void addIncomes(IncomesList iList, JSONObject jsonObject) {
         //stub
     }
