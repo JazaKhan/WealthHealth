@@ -1,7 +1,11 @@
 package model.expenses;
 
+import org.json.JSONObject;
+
+import model.persistence.Writable;
+
 // Represents a single expense with the title and amount (in Dollars)
-public class Expense {
+public class Expense implements Writable{
 
     private String expenseName;
     private double expenseAmount;
@@ -28,6 +32,13 @@ public class Expense {
 
     public double getExpenseAmount() {
         return this.expenseAmount;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put(expenseName, expenseAmount);
+        return json;
     }
 
 }

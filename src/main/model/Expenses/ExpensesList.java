@@ -84,19 +84,28 @@ public class ExpensesList implements Writable {
     public Expense getExpense(Expense expense) {
         return expense;
     }
+    
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
 
-        @Override
+    @Override
     public JSONObject toJson() {
-        //stub
+        JSONObject json = new JSONObject();
+        json.put("ExpensesList", expensesToJson());
+        return json;
     }
 
     // EFFECTS: returns Expenses in this ExpensesList as a JSON array
     private JSONArray expensesToJson() {
-        //stub
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense expense : expenses) {
+            jsonArray.put(expense.toJson());
+        }
+
+        return jsonArray;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
 
 }
