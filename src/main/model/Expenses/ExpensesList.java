@@ -95,4 +95,8 @@ public class ExpensesList implements Writable {
         //stub
     }
 
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
 }

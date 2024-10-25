@@ -40,12 +40,12 @@ public class JsonReader {
     }
 
     // EFFECTS: parses ExpensesList from JSON object and returns it
-    private ExpensesList recreateExpensesList(JSONObject jsonObject) {
+    private ExpensesList parseExpensesList(JSONObject jsonObject) {
        //stub
     }
 
     // EFFECTS: parses IncomesList from JSON object and returns it
-    private IncomesList recreateIncomesList(JSONObject jsonObject) {
+    private IncomesList parseIncomesList(JSONObject jsonObject) {
         //stub
      }
 

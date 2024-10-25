@@ -95,4 +95,8 @@ public class IncomesList implements Writable {
     private JSONArray incomesToJson() {
         //stub
     }
+
+	public List<Income> getIncomes() {
+		return incomes;
+	}
 }
