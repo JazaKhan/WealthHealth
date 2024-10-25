@@ -1,4 +1,5 @@
 package persistence;
+
 import org.json.JSONObject;
 
 import model.ExpensesList;
@@ -28,15 +29,15 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of ExpensesList to file
-    public void writeExpenses(ExpensesList eList) {
-        JSONObject json = eList.toJson();
+    public void writeExpenses(ExpensesList expensesList) {
+        JSONObject json = expensesList.toJson();
         saveToFile(json.toString(TAB));
     }
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of IncomesList to file
-    public void writeIncomes(IncomesList iList) {
-        JSONObject json = iList.toJson();
+    public void writeIncomes(IncomesList incomesList) {
+        JSONObject json = incomesList.toJson();
         saveToFile(json.toString(TAB));
     }
 

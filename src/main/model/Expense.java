@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a single expense with the title and amount (in Dollars)
-public class Expense implements Writable{
+public class Expense implements Writable {
 
     private String expenseName;
     private double expenseAmount;

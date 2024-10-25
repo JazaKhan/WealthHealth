@@ -34,7 +34,7 @@ public class TestIncome {
     }
 
     @Test
-    void toJson () {
+    void toJson() {
         JSONObject json = incomeTest.toJson();
         assertEquals(incomeTest.getIncomeName(), json.getString("name"));
         assertEquals(incomeTest.getIncomeAmount(), json.getDouble("amount"));

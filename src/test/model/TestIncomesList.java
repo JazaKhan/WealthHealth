@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -166,4 +167,41 @@ public class TestIncomesList {
 
         assertEquals("Job 1: 3000.0 Job 2: 400.0 Job 3: 2000.0 ", testIncomesList.viewIncomesList());
     }
+
+
+    @Test
+    void testClear(){
+        Income income = new Income("Job 1", 3000);
+        Income income1 = new Income("Job 2", 400);
+        Income income2 = new Income("Job 3", 2000);
+
+        testIncomesList.addIncome(income);
+        testIncomesList.addIncome(income1);
+        testIncomesList.addIncome(income2);
+
+        assertTrue(testIncomesList.contains(income));
+        assertTrue(testIncomesList.contains(income1));
+        assertTrue(testIncomesList.contains(income2));
+
+        testIncomesList.clear();
+        assertEquals(0, testIncomesList.getSize());
+
+    }
+
+    @Test
+    void testToJson() {
+        Income income = new Income("Job 1", 3000);
+        Income income1 = new Income("Job 2", 400);
+
+        testIncomesList.addIncome(income);
+        testIncomesList.addIncome(income1);
+
+        JSONObject json = testIncomesList.toJson();
+        assertEquals(testIncomesList.getIncomes().get(0).getIncomeName(), json.getJSONArray("IncomesList").getJSONObject(0).getString("name"));
+        assertEquals(testIncomesList.getIncomes().get(1).getIncomeName(), json.getJSONArray("IncomesList").getJSONObject(1).getString("name"));
+
+        assertEquals(testIncomesList.getIncomes().get(0).getIncomeAmount(), json.getJSONArray("IncomesList").getJSONObject(0).getDouble("amount"));
+        assertEquals(testIncomesList.getIncomes().get(1).getIncomeAmount(), json.getJSONArray("IncomesList").getJSONObject(1).getDouble("amount"));
+    }
+
 }

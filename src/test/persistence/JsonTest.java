@@ -3,8 +3,8 @@ package persistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import model.expenses.Expense;
-import model.incomes.Income;
+import model.Expense;
+import model.Income;
 
 //JsonSerializationDemo PROJECT WAS REFERRED TO IN ORDER TO WRITE THIS CODE.
 public class JsonTest {

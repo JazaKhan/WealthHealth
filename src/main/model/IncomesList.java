@@ -86,9 +86,9 @@ public class IncomesList implements Writable {
         return income;
     }
 
-	public List<Income> getIncomes() {
-		return incomes;
-	}
+    public List<Income> getIncomes() {
+        return incomes;
+    }
 
     public int getSize() {
         return incomes.size();
@@ -115,6 +115,5 @@ public class IncomesList implements Writable {
 
         return jsonArray;
     }
-
 
 }

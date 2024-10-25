@@ -39,7 +39,6 @@ public class JsonReader {
         return parseIncomesList(jsonObject);
     }
 
-
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -53,53 +52,53 @@ public class JsonReader {
 
     // EFFECTS: parses ExpensesList from JSON object and returns it
     private ExpensesList parseExpensesList(JSONObject jsonObject) {
-        ExpensesList eList = new ExpensesList();
-        addExpenses(eList, jsonObject);
-        return eList;
+        ExpensesList expensesList = new ExpensesList();
+        addExpenses(expensesList, jsonObject);
+        return expensesList;
     }
 
     // EFFECTS: parses IncomesList from JSON object and returns it
     private IncomesList parseIncomesList(JSONObject jsonObject) {
-        IncomesList iList = new IncomesList();
-        addIncomes(iList, jsonObject);
-        return iList;
-     }
+        IncomesList incomesList = new IncomesList();
+        addIncomes(incomesList, jsonObject);
+        return incomesList;
+    }
 
-    // MODIFIES: eList
+    // MODIFIES: expensesList
     // EFFECTS: parses Expenses from JSON object and adds them to ExpensesList
-    private void addExpenses(ExpensesList eList, JSONObject jsonObject) {
+    private void addExpenses(ExpensesList expensesList, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("ExpensesList");
         for (Object json : jsonArray) {
             JSONObject nextExpense = (JSONObject) json;
-            addExpense(eList, nextExpense);
+            addExpense(expensesList, nextExpense);
         }
     }
 
-    // MODIFIES: eList
+    // MODIFIES: expensesList
     // EFFECTS: parses expense from JSON object and adds it to ExpensesList
-    private void addExpense(ExpensesList eList, JSONObject jsonObject) {
+    private void addExpense(ExpensesList expensesList, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double amount = jsonObject.getDouble("amount");
         Expense expense = new Expense(name, amount);
-        eList.addExpense(expense);
+        expensesList.addExpense(expense);
     }
 
-    // MODIFIES: iList
+    // MODIFIES: incomesList
     // EFFECTS: parses Incomes from JSON object and adds it to IncomesList
-    private void addIncomes(IncomesList iList, JSONObject jsonObject) {
+    private void addIncomes(IncomesList incomesList, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("IncomesList");
         for (Object json : jsonArray) {
             JSONObject nextIncome = (JSONObject) json;
-            addIncome(iList, nextIncome);
+            addIncome(incomesList, nextIncome);
         }
     }
 
-    // MODIFIES: iList
+    // MODIFIES: incomesList
     // EFFECTS: parses Income from JSON object and adds it to IncomesList
-    private void addIncome(IncomesList iList, JSONObject jsonObject) {
+    private void addIncome(IncomesList incomesList, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double amount = jsonObject.getDouble("amount");
         Income income = new Income(name, amount);
-        iList.addIncome(income);
+        incomesList.addIncome(income);
     }
 }

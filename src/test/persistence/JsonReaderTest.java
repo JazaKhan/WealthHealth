@@ -3,11 +3,11 @@ package persistence;
 
 import org.junit.jupiter.api.Test;
 
-import model.expenses.Expense;
-import model.expenses.ExpensesList;
-import model.incomes.Income;
-import model.incomes.IncomesList;
-import model.persistence.JsonReader;
+import model.Expense;
+import model.ExpensesList;
+import model.Income;
+import model.IncomesList;
+import persistence.JsonReader;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +22,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentExpensesFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            ExpensesList eList = reader.readExpenses();
+            ExpensesList expensesList = reader.readExpenses();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -33,8 +33,8 @@ class JsonReaderTest extends JsonTest {
     void testReaderEmptyExpensesList() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyExpensesList.json");
         try {
-            ExpensesList eList = reader.readExpenses();
-            assertEquals(0, eList.getSize());
+            ExpensesList expensesList = reader.readExpenses();
+            assertEquals(0, expensesList.getSize());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -44,8 +44,8 @@ class JsonReaderTest extends JsonTest {
     void testReaderGeneralExpensesList() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralExpensesList.json");
         try {
-            ExpensesList eList = reader.readExpenses();
-            List<Expense> expenses = eList.getExpenses();
+            ExpensesList expensesList = reader.readExpenses();
+            List<Expense> expenses = expensesList.getExpenses();
             assertEquals(2, expenses.size());
             checkExpense("car", 1000, expenses.get(0));
             checkExpense("house", 3000, expenses.get(1));
@@ -60,7 +60,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentIncomesFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            IncomesList iList = reader.readIncomes();
+            IncomesList incomesList = reader.readIncomes();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -71,8 +71,8 @@ class JsonReaderTest extends JsonTest {
     void testReaderEmptyIncomesList() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyIncomesList.json");
         try {
-            IncomesList iList = reader.readIncomes();
-            assertEquals(0, iList.getSize());
+            IncomesList incomesList = reader.readIncomes();
+            assertEquals(0, incomesList.getSize());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -82,8 +82,8 @@ class JsonReaderTest extends JsonTest {
     void testReaderGeneralIncomesList() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralIncomesList.json");
         try {
-            IncomesList iList = reader.readIncomes();
-            List<Income> incomes = iList.getIncomes();
+            IncomesList incomesList = reader.readIncomes();
+            List<Income> incomes = incomesList.getIncomes();
             assertEquals(2, incomes.size());
             checkIncome("Job 1", 1000, incomes.get(0));
             checkIncome("Job 2", 4000, incomes.get(1));

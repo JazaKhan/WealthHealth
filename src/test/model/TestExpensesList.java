@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -167,5 +168,38 @@ public class TestExpensesList {
         assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0 ", testExpensesList.viewExpensesList());
     }
 
-    //add tests
+        @Test
+    void testClear(){
+        Expense expense = new Expense("Food", 200);
+        Expense expense1 = new Expense("Clothes", 400);
+        Expense expense2 = new Expense("Jewelry", 2000);
+
+        testExpensesList.addExpense(expense);
+        testExpensesList.addExpense(expense1);
+        testExpensesList.addExpense(expense2);
+
+        assertTrue(testExpensesList.contains(expense));
+        assertTrue(testExpensesList.contains(expense1));
+        assertTrue(testExpensesList.contains(expense2));
+
+        testExpensesList.clear();
+        assertEquals(0, testExpensesList.getSize());
+
+    }
+
+    @Test
+    void testToJson() {
+        Expense expense = new Expense("Food", 200);
+        Expense expense1 = new Expense("Clothes", 400);
+
+        testExpensesList.addExpense(expense);
+        testExpensesList.addExpense(expense1);
+
+        JSONObject json = testExpensesList.toJson();
+        assertEquals(testExpensesList.getExpenses().get(0).getExpenseName(), json.getJSONArray("ExpensesList").getJSONObject(0).getString("name"));
+        assertEquals(testExpensesList.getExpenses().get(1).getExpenseName(), json.getJSONArray("ExpensesList").getJSONObject(1).getString("name"));
+
+        assertEquals(testExpensesList.getExpenses().get(0).getExpenseAmount(), json.getJSONArray("ExpensesList").getJSONObject(0).getDouble("amount"));
+        assertEquals(testExpensesList.getExpenses().get(1).getExpenseAmount(), json.getJSONArray("ExpensesList").getJSONObject(1).getDouble("amount"));
+    }
 }
