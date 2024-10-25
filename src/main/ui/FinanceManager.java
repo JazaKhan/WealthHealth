@@ -53,7 +53,9 @@ public class FinanceManager {
         System.out.println("6. Modify Expense");
         System.out.println("7. View List of Incomes");
         System.out.println("8. View List of Expenses");
-        System.out.println("9. Quit");
+        System.out.println("9. Save WealthHealth Progress");
+        System.out.println("10. Load WealthHealth Progress");
+        System.out.println("11. Quit");
     }
 
     // EFFECTS: Use the user input to execute appropriate response
@@ -83,6 +85,12 @@ public class FinanceManager {
                 viewExpensesList();
                 break;
             case "9":
+                saveProgram();
+                break;
+            case "10":
+                reloadProgress();
+                break;
+            case "11":
                 endProgram();
                 break;
             default:
@@ -222,6 +230,16 @@ public class FinanceManager {
     // EFFECTS: Displays the list of expenses.
     public void viewExpensesList() {
         System.out.println(expenses.viewExpensesList());
+    }
+
+    //EFFECTS: Saves the program to File
+    public void saveProgram() {
+        //stub
+    }
+
+    //Effects: Reloads progress to program
+    public void reloadProgress(){
+        //stub
     }
 
     // MODIFIES: this
