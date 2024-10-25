@@ -1,9 +1,9 @@
-package model.persistence;
+package persistence;
 
-import model.expenses.Expense;
-import model.expenses.ExpensesList;
-import model.incomes.Income;
-import model.incomes.IncomesList;
+import model.Expense;
+import model.ExpensesList;
+import model.Income;
+import model.IncomesList;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

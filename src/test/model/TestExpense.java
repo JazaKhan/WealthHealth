@@ -1,12 +1,10 @@
-package model.expenses;
+package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import model.expenses.Expense;
 
 public class TestExpense {
 
@@ -37,7 +35,7 @@ public class TestExpense {
     }
 
     @Test
-    void toJson () {
+    void toJson() {
         JSONObject json = expenseTest.toJson();
         assertEquals(expenseTest.getExpenseName(), json.getString("name"));
         assertEquals(expenseTest.getExpenseAmount(), json.getDouble("amount"));

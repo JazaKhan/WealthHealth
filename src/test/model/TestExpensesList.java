@@ -1,12 +1,10 @@
-package model.expenses;
+package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.expenses.Expense;
-import model.expenses.ExpensesList;
 
 public class TestExpensesList {
     private ExpensesList testExpensesList;

@@ -1,11 +1,11 @@
 package ui;
 
-import model.expenses.Expense;
-import model.expenses.ExpensesList;
-import model.incomes.Income;
-import model.incomes.IncomesList;
-import model.persistence.JsonReader;
-import model.persistence.JsonWriter;
+import model.Expense;
+import model.ExpensesList;
+import model.Income;
+import model.IncomesList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,8 +1,8 @@
-package model.incomes;
+package model;
 
 import org.json.JSONObject;
 
-import model.persistence.Writable;
+import persistence.Writable;
 
 // Represents a single income with the title and amount (in Dollars)
 public class Income implements Writable {

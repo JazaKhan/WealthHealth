@@ -1,4 +1,4 @@
-package model.expenses;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.persistence.Writable;
+import persistence.Writable;
 
 //Represents a list of expenses with titles and amounts (in Dollars).
 public class ExpensesList implements Writable {

@@ -1,8 +1,8 @@
-package model.persistence;
+package persistence;
 import org.json.JSONObject;
 
-import model.expenses.ExpensesList;
-import model.incomes.IncomesList;
+import model.ExpensesList;
+import model.IncomesList;
 
 
 import java.io.*;

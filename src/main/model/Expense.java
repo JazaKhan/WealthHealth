@@ -1,8 +1,8 @@
-package model.expenses;
+package model;
 
 import org.json.JSONObject;
 
-import model.persistence.Writable;
+import persistence.Writable;
 
 // Represents a single expense with the title and amount (in Dollars)
 public class Expense implements Writable{
