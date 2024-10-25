@@ -91,6 +91,10 @@ public class IncomesList implements Writable {
 		return incomes;
 	}
 
+    public int getSize() {
+        return incomes.size();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

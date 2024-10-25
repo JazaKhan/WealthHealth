@@ -1,0 +1,10 @@
+{"ExpensesList": [
+    {
+        "amount": 1000,
+        "name": "car"
+    },
+    {
+        "amount": 3000,
+        "name": "house"
+    }
+]}

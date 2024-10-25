@@ -1,0 +1,10 @@
+{"IncomesList": [
+    {
+        "amount": 1000,
+        "name": "Job 1"
+    },
+    {
+        "amount": 4000,
+        "name": "Job 2"
+    }
+]}

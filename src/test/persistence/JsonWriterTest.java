@@ -40,7 +40,7 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyExpensesList.json");
             eList = reader.readExpenses();
-            assertNull(eList.getExpenses());
+            assertEquals(0, eList.getSize());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -94,7 +94,7 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyIncomesList.json");
             iList = reader.readIncomes();
-            assertNull(iList.getIncomes());
+            assertEquals(0, iList.getSize());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

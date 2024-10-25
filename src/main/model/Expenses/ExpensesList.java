@@ -89,6 +89,10 @@ public class ExpensesList implements Writable {
         return expenses;
     }
 
+    public int getSize() {
+        return expenses.size();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
