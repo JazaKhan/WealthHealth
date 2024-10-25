@@ -6,8 +6,10 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.persistence.Writable;
+
 //Represents a list of expenses with titles and amounts (in Dollars).
-public class ExpensesList {
+public class ExpensesList implements Writable {
     private List<Expense> expenses;
 
     // EFFECTS: Initializes an empty list of expenses.
