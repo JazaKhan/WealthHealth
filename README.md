@@ -11,3 +11,7 @@ WealthHealth will allow users to track their **financal health** and formulate p
 - As a user, I want to be able to create a new income under my income list.
 - As a user, I want to be able to view the list of my incomes.
 - As a user, I want to be able to modify or delete an item from my list of incomes.
+- As a user, I want to be able to save my incomes list to file (if I so choose).
+- As a user, I want to be able to be able to load my incomes list from file (if I so choose).
+- As a user, I want to be able to save my expenses list to file (if I so choose).
+- As a user, I want to be able to be able to load my expenses list from file (if I so choose).
