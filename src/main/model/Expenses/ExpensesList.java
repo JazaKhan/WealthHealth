@@ -3,6 +3,9 @@ package model.expenses;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 //Represents a list of expenses with titles and amounts (in Dollars).
 public class ExpensesList {
     private List<Expense> expenses;
@@ -78,6 +81,16 @@ public class ExpensesList {
 
     public Expense getExpense(Expense expense) {
         return expense;
+    }
+
+        @Override
+    public JSONObject toJson() {
+        //stub
+    }
+
+    // EFFECTS: returns Expenses in this ExpensesList as a JSON array
+    private JSONArray expensesToJson() {
+        //stub
     }
 
 }

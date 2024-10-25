@@ -3,8 +3,13 @@ package model.incomes;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import model.persistence.Writable;
+
 //Represents a list of incomes with titles and amounts (in Dollars).
-public class IncomesList {
+public class IncomesList implements Writable {
     private List<Income> incomes;
 
     // EFFECTS: Initializes an empty list of incomes.
@@ -81,4 +86,13 @@ public class IncomesList {
         return income;
     }
 
+    @Override
+    public JSONObject toJson() {
+        //stub
+    }
+
+    // EFFECTS: returns Incomes in this IncomesList as a JSON array
+    private JSONArray incomesToJson() {
+        //stub
+    }
 }
