@@ -4,22 +4,39 @@ import model.expenses.Expense;
 import model.expenses.ExpensesList;
 import model.incomes.Income;
 import model.incomes.IncomesList;
+import model.persistence.JsonReader;
+import model.persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //LAB 4 WAS USED TO ASSIST WITH THIS PART.
 // Represents the result of user interaction with the two lists: expenses and incomes.
 public class FinanceManager {
+    private static final String EXPENSES_FILE = "./data/expenses.json";
+    private static final String INCOMES_FILE = "./data/incomes.json";
+
     private Scanner scanner;
     private IncomesList incomes;
     private ExpensesList expenses;
     private boolean isProgramRunning;
+    private JsonWriter jsonWriterExp;
+    private JsonReader jsonReaderExp;
+    private JsonWriter jsonWriterInc;
+    private JsonReader jsonReaderInc;
+    
 
     // EFFECTS: prints a welcome messae and manages program execution.
     public FinanceManager() {
         init();
 
         System.out.println("Welcome to WealthHealth!");
+
+        jsonWriterExp = new JsonWriter(EXPENSES_FILE);
+        jsonReaderExp = new JsonReader(EXPENSES_FILE);
+        jsonWriterInc = new JsonWriter(INCOMES_FILE);
+        jsonReaderInc = new JsonReader(INCOMES_FILE);
 
         while (this.isProgramRunning) {
             excecuteProgram();
@@ -54,7 +71,7 @@ public class FinanceManager {
         System.out.println("7. View List of Incomes");
         System.out.println("8. View List of Expenses");
         System.out.println("9. Save WealthHealth Progress");
-        System.out.println("10. Load WealthHealth Progress");
+        System.out.println("10.Load WealthHealth Progress");
         System.out.println("11. Quit");
     }
 
@@ -234,12 +251,59 @@ public class FinanceManager {
 
     //EFFECTS: Saves the program to File
     public void saveProgram() {
-        //stub
+        saveExpenses();
+        saveIncomes();
+        System.out.println("Saved!");
     }
 
     //Effects: Reloads progress to program
     public void reloadProgress(){
-        //stub
+        reloadExpenses();
+        reloadIncomes();
+        System.out.println("Loaded!");
+
+    }
+
+    // EFFECTS: saves the expenses to file
+    private void saveExpenses() {
+        try {
+            jsonWriterExp.open();
+            jsonWriterExp.writeExpenses(expenses);
+            jsonWriterExp.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file");
+        }
+    }
+
+    // EFFECTS: saves the incomes to file
+    private void saveIncomes() {
+        try {
+            jsonWriterInc.open();
+            jsonWriterInc.writeIncomes(incomes);
+            jsonWriterInc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads expenses from file
+    private void reloadExpenses() {
+        try {
+            expenses = jsonReaderExp.readExpenses();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file!");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads incomes from file
+    private void reloadIncomes() {
+        try {
+            incomes = jsonReaderInc.readIncomes();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file!");
+        }
     }
 
     // MODIFIES: this
