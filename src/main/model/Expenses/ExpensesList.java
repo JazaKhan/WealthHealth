@@ -93,6 +93,10 @@ public class ExpensesList implements Writable {
         return expenses.size();
     }
 
+    public void clear() {
+        this.expenses.clear();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

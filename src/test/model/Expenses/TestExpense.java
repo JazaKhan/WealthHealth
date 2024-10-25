@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import model.expenses.Expense;
+
 public class TestExpense {
 
     private Expense expenseTest;

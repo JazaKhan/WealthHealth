@@ -94,6 +94,10 @@ public class IncomesList implements Writable {
         return incomes.size();
     }
 
+    public void clear() {
+        this.incomes.clear();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -111,5 +115,6 @@ public class IncomesList implements Writable {
 
         return jsonArray;
     }
+
 
 }

@@ -254,6 +254,8 @@ public class FinanceManager {
     public void saveProgram() {
         saveExpenses();
         saveIncomes();
+        incomes.clear();
+        expenses.clear();
         System.out.println("Saved!");
     }
 

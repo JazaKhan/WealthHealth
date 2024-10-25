@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import model.expenses.Expense;
+import model.expenses.ExpensesList;
+
 public class TestExpensesList {
     private ExpensesList testExpensesList;
 
@@ -166,4 +169,5 @@ public class TestExpensesList {
         assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0 ", testExpensesList.viewExpensesList());
     }
 
+    //add tests
 }
