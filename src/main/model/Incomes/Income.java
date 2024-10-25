@@ -36,7 +36,8 @@ public class Income implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put(incomeName, incomeAmount);
+        json.put("name", incomeName);
+        json.put("amount", incomeAmount);
         return json;
     }
 }
