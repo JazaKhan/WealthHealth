@@ -84,7 +84,7 @@ public class ExpensesList implements Writable {
     public Expense getExpense(Expense expense) {
         return expense;
     }
-    
+
     public List<Expense> getExpenses() {
         return expenses;
     }
@@ -106,6 +106,5 @@ public class ExpensesList implements Writable {
 
         return jsonArray;
     }
-
 
 }

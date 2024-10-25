@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.expenses.Expense;
 import model.persistence.Writable;
 
 //Represents a list of incomes with titles and amounts (in Dollars).
@@ -86,17 +87,26 @@ public class IncomesList implements Writable {
         return income;
     }
 
-    @Override
-    public JSONObject toJson() {
-        //stub
-    }
-
-    // EFFECTS: returns Incomes in this IncomesList as a JSON array
-    private JSONArray incomesToJson() {
-        //stub
-    }
-
 	public List<Income> getIncomes() {
 		return incomes;
 	}
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("IncomesList", incomesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns Expenses in this ExpensesList as a JSON array
+    private JSONArray incomesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Income income : incomes) {
+            jsonArray.put(income.toJson());
+        }
+
+        return jsonArray;
+    }
+
 }

@@ -1,7 +1,11 @@
 package model.incomes;
 
+import org.json.JSONObject;
+
+import model.persistence.Writable;
+
 // Represents a single income with the title and amount (in Dollars)
-public class Income {
+public class Income implements Writable {
     private String incomeName;
     private double incomeAmount;
 
@@ -29,4 +33,10 @@ public class Income {
         return this.incomeAmount;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put(incomeName, incomeAmount);
+        return json;
+    }
 }
