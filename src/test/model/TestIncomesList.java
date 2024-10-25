@@ -168,9 +168,8 @@ public class TestIncomesList {
         assertEquals("Job 1: 3000.0 Job 2: 400.0 Job 3: 2000.0 ", testIncomesList.viewIncomesList());
     }
 
-
     @Test
-    void testClear(){
+    void testClear() {
         Income income = new Income("Job 1", 3000);
         Income income1 = new Income("Job 2", 400);
         Income income2 = new Income("Job 3", 2000);
@@ -197,11 +196,18 @@ public class TestIncomesList {
         testIncomesList.addIncome(income1);
 
         JSONObject json = testIncomesList.toJson();
-        assertEquals(testIncomesList.getIncomes().get(0).getIncomeName(), json.getJSONArray("IncomesList").getJSONObject(0).getString("name"));
-        assertEquals(testIncomesList.getIncomes().get(1).getIncomeName(), json.getJSONArray("IncomesList").getJSONObject(1).getString("name"));
 
-        assertEquals(testIncomesList.getIncomes().get(0).getIncomeAmount(), json.getJSONArray("IncomesList").getJSONObject(0).getDouble("amount"));
-        assertEquals(testIncomesList.getIncomes().get(1).getIncomeAmount(), json.getJSONArray("IncomesList").getJSONObject(1).getDouble("amount"));
+        String incomeName1 = testIncomesList.getIncomes().get(0).getIncomeName();
+        String incomeName2 = testIncomesList.getIncomes().get(1).getIncomeName();
+
+        double incomeAmount1 = testIncomesList.getIncomes().get(0).getIncomeAmount();
+        double incomeAmount2 = testIncomesList.getIncomes().get(1).getIncomeAmount();
+
+        assertEquals(incomeName1, json.getJSONArray("IncomesList").getJSONObject(0).getString("name"));
+        assertEquals(incomeName2, json.getJSONArray("IncomesList").getJSONObject(1).getString("name"));
+
+        assertEquals(incomeAmount1, json.getJSONArray("IncomesList").getJSONObject(0).getDouble("amount"));
+        assertEquals(incomeAmount2, json.getJSONArray("IncomesList").getJSONObject(1).getDouble("amount"));
     }
 
 }

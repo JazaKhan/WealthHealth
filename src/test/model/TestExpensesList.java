@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 public class TestExpensesList {
     private ExpensesList testExpensesList;
 
@@ -168,8 +167,8 @@ public class TestExpensesList {
         assertEquals("Food: 200.0 Clothes: 400.0 Jewelry: 2000.0 ", testExpensesList.viewExpensesList());
     }
 
-        @Test
-    void testClear(){
+    @Test
+    void testClear() {
         Expense expense = new Expense("Food", 200);
         Expense expense1 = new Expense("Clothes", 400);
         Expense expense2 = new Expense("Jewelry", 2000);
@@ -196,10 +195,16 @@ public class TestExpensesList {
         testExpensesList.addExpense(expense1);
 
         JSONObject json = testExpensesList.toJson();
-        assertEquals(testExpensesList.getExpenses().get(0).getExpenseName(), json.getJSONArray("ExpensesList").getJSONObject(0).getString("name"));
-        assertEquals(testExpensesList.getExpenses().get(1).getExpenseName(), json.getJSONArray("ExpensesList").getJSONObject(1).getString("name"));
+        String expenseName1 = testExpensesList.getExpenses().get(0).getExpenseName();
+        String expenseName2 = testExpensesList.getExpenses().get(1).getExpenseName();
 
-        assertEquals(testExpensesList.getExpenses().get(0).getExpenseAmount(), json.getJSONArray("ExpensesList").getJSONObject(0).getDouble("amount"));
-        assertEquals(testExpensesList.getExpenses().get(1).getExpenseAmount(), json.getJSONArray("ExpensesList").getJSONObject(1).getDouble("amount"));
+        double expenseAmount1 = testExpensesList.getExpenses().get(0).getExpenseAmount();
+        double expenseAmount2 = testExpensesList.getExpenses().get(1).getExpenseAmount();
+
+        assertEquals(expenseName1, json.getJSONArray("ExpensesList").getJSONObject(0).getString("name"));
+        assertEquals(expenseName2, json.getJSONArray("ExpensesList").getJSONObject(1).getString("name"));
+
+        assertEquals(expenseAmount1, json.getJSONArray("ExpensesList").getJSONObject(0).getDouble("amount"));
+        assertEquals(expenseAmount2, json.getJSONArray("ExpensesList").getJSONObject(1).getDouble("amount"));
     }
 }
