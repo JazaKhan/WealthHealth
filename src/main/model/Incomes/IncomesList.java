@@ -6,7 +6,6 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.expenses.Expense;
 import model.persistence.Writable;
 
 //Represents a list of incomes with titles and amounts (in Dollars).

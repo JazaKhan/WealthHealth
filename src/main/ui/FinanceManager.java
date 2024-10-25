@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+//JsonSerializationDemo PROJECT WAS REFERRED TO IN ORDER TO WRITE THIS CODE.
 //LAB 4 WAS USED TO ASSIST WITH THIS PART.
 // Represents the result of user interaction with the two lists: expenses and incomes.
 public class FinanceManager {
