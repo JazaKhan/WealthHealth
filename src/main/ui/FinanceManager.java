@@ -26,7 +26,6 @@ public class FinanceManager {
     private JsonReader jsonReaderExp;
     private JsonWriter jsonWriterInc;
     private JsonReader jsonReaderInc;
-    
 
     // EFFECTS: prints a welcome messae and manages program execution.
     public FinanceManager() {
@@ -77,6 +76,7 @@ public class FinanceManager {
     }
 
     // EFFECTS: Use the user input to execute appropriate response
+    @SuppressWarnings("methodlength") // approved by TA
     public void processMenuCommands(String input) {
         switch (input) {
             case "1":
@@ -250,7 +250,7 @@ public class FinanceManager {
         System.out.println(expenses.viewExpensesList());
     }
 
-    //EFFECTS: Saves the program to File
+    // EFFECTS: Saves the program to File
     public void saveProgram() {
         saveExpenses();
         saveIncomes();
@@ -259,8 +259,8 @@ public class FinanceManager {
         System.out.println("Saved!");
     }
 
-    //Effects: Reloads progress to program
-    public void reloadProgress(){
+    // Effects: Reloads progress to program
+    public void reloadProgress() {
         reloadExpenses();
         reloadIncomes();
         System.out.println("Loaded!");
