@@ -6,8 +6,6 @@ import model.Expense;
 import model.ExpensesList;
 import model.Income;
 import model.IncomesList;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 
 import java.io.IOException;
 import java.util.List;

@@ -27,7 +27,7 @@ public class FinanceManager {
     private JsonWriter jsonWriterInc;
     private JsonReader jsonReaderInc;
 
-    // EFFECTS: prints a welcome messae and manages program execution.
+    // EFFECTS: prints a welcome message and manages program execution.
     public FinanceManager() {
         init();
 
