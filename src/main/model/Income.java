@@ -40,4 +40,9 @@ public class Income implements Writable {
         json.put("amount", incomeAmount);
         return json;
     }
+
+    @Override
+    public String toString() {
+        return "Income: " + getIncomeName() + ": $" + getIncomeAmount();
+    }
 }

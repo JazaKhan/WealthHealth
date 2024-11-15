@@ -42,4 +42,8 @@ public class Expense implements Writable {
         return json;
     }
 
+    @Override
+    public String toString() {
+        return "Expense: " + getExpenseName() + ": $" + getExpenseAmount();
+    }
 }
