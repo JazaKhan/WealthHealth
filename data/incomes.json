@@ -1,4 +1,10 @@
-{"IncomesList": [{
-    "amount": 39,
-    "name": "Job 1"
-}]}
+{"IncomesList": [
+    {
+        "amount": 50000,
+        "name": "Job 1"
+    },
+    {
+        "amount": 4000,
+        "name": "Slay"
+    }
+]}

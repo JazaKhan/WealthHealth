@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 import model.Expense;
@@ -9,6 +10,10 @@ import model.Income;
 import model.IncomesList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+
+//Referred to C3-LectureLabStarter, AlarmSystem, geeksforgeeks (https://www.geeksforgeeks.org/introduction-to-java-swing/)
+//Cottrell Coding (https://www.youtube.com/watch?v=WOooJ_165xY&ab_channel=CottrellCoding)
+//Telusko (https://www.youtube.com/watch?v=Xh0HZJ3Gd2c&ab_channel=Telusko)
 
 //Represents the main window in which the WealthHealth App is run
 public class FinanceManagerGUI extends JFrame {
@@ -24,16 +29,19 @@ public class FinanceManagerGUI extends JFrame {
     private JsonReader jsonReaderInc;
 
     public FinanceManagerGUI() {
+        jsonWriterExp = new JsonWriter(EXPENSES_FILE);
+        jsonReaderExp = new JsonReader(EXPENSES_FILE);
+        jsonWriterInc = new JsonWriter(INCOMES_FILE);
+        jsonReaderInc = new JsonReader(INCOMES_FILE);
+
         init();
         screen();
     }
 
     // EFFECTS: Manages data and program execution
     public void init() {
-        jsonWriterExp = new JsonWriter(EXPENSES_FILE);
-        jsonReaderExp = new JsonReader(EXPENSES_FILE);
-        jsonWriterInc = new JsonWriter(INCOMES_FILE);
-        jsonReaderInc = new JsonReader(INCOMES_FILE);
+        this.incomes = new IncomesList();
+        this.expenses = new ExpensesList();
     }
 
     // EFFECTS: Sets up GUI screen
@@ -42,105 +50,322 @@ public class FinanceManagerGUI extends JFrame {
         setTitle("WealthHealth");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel headerJPanel = header();
+        JPanel center = center();
+        JPanel buttons = buttons();
+
+        add(headerJPanel, BorderLayout.NORTH);
+        add(center, BorderLayout.CENTER);
+        add(buttons, BorderLayout.SOUTH);
     }
 
-    //EFFECTS: Creates a header for the GUI Screen
-    public void header(){
-        //stub
+    // EFFECTS: Creates a header for the GUI Screen
+    public JPanel header() {
+        JPanel headerJPanel = new JPanel();
+        headerJPanel.setBackground(Color.CYAN);
+        Font font = new Font("Arial", Font.BOLD, 26);
+        JLabel titleName = new JLabel("WealthHealth");
+        titleName.setFont(font);
+        headerJPanel.add(titleName);
+        return headerJPanel;
     }
 
-    //EFFECTS: Contains the centered content for the GUI Screen
-    public void content(){
-        //stub
+    // EFFECTS: Contains the centered content for the GUI Screen
+    public JPanel center() {
+        JPanel transactionHistory = new JPanel();
+        transactionHistory.setBackground(Color.YELLOW);
+        return transactionHistory;
     }
 
-    //EFFECTS: Creates the buttons required
-    public void buttons(){
-        //stub
+    // EFFECTS: Creates the buttons required
+    public JPanel buttons() {
+        JPanel buttons = new JPanel();
+        buttons.setLayout(new GridLayout(3, 1, 3, 3));
+        buttons.setBackground(Color.lightGray);
+
+        JButton addIncome = new JButton("Add Income");
+        JButton addExpense = new JButton("Add Expense");
+        JButton removeIncome = new JButton("Remove Income");
+        JButton removeExpense = new JButton("Remove Expense");
+        JButton modifyIncome = new JButton("Modify Income");
+        JButton modifyExpense = new JButton("Modify Expense");
+        JButton saveProgram = new JButton("Save Program");
+        JButton reloadProgress = new JButton("Reload Progress");
+        JButton viewLogo = new JButton("View Logo");
+        JButton viewIncomes = new JButton("View Incomes");
+        JButton viewExpenses = new JButton("View Expenses");
+
+        addIncome.setBackground(Color.MAGENTA);
+        removeIncome.setBackground(Color.MAGENTA);
+        modifyIncome.setBackground(Color.MAGENTA);
+        addExpense.setBackground(Color.GREEN);
+        removeExpense.setBackground(Color.GREEN);
+        modifyExpense.setBackground(Color.GREEN);
+        saveProgram.setBackground(Color.PINK);
+        reloadProgress.setBackground(Color.PINK);
+
+        addIncome.addActionListener(ae -> addIncome());
+        addExpense.addActionListener(ae -> addExpense());
+        removeIncome.addActionListener(ae -> removeIncome());
+        removeExpense.addActionListener(ae -> removeExpense());
+        modifyIncome.addActionListener(ae -> modifyIncome());
+        modifyExpense.addActionListener(ae -> modifyExpense());
+        saveProgram.addActionListener(ae -> saveProgram());
+        reloadProgress.addActionListener(ae -> reloadProgress());
+        viewLogo.addActionListener(ae -> viewLogo());
+        viewIncomes.addActionListener(ae -> viewIncomesList());
+        viewExpenses.addActionListener(ae -> viewExpensesList());
+
+        buttons.add(addIncome);
+        buttons.add(addExpense);
+        buttons.add(removeIncome);
+        buttons.add(removeExpense);
+        buttons.add(modifyIncome);
+        buttons.add(modifyExpense);
+        buttons.add(saveProgram);
+        buttons.add(reloadProgress);
+        buttons.add(viewLogo);
+        buttons.add(viewIncomes);
+        buttons.add(viewExpenses);
+
+        return buttons;
     }
 
+    // Referrenced stackoverflow
+    // (https://stackoverflow.com/questions/40068703/how-to-get-user-input-as-a-double-and-then-perform-calculations-with-it)
     // MODIFIES: this
     // EFFECTS: adds a new income to the list of incomes
     public void addIncome() {
-        //stub
+        try {
+            String name = JOptionPane.showInputDialog("Please enter the title of your income");
+            String strAmount = JOptionPane.showInputDialog("Please enter the amount of your income");
+
+            Double amount = Double.parseDouble(strAmount);
+
+            Income income = new Income(name, amount);
+
+            incomes.addIncome(income);
+            JOptionPane.showMessageDialog(null, "Added Income Successfully!", "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Add Income", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new expense to the list of expenses
     public void addExpense() {
-        //stub
+        try {
+            String name = JOptionPane.showInputDialog("Please enter the title of your expense");
+            String strAmount = JOptionPane.showInputDialog("Please enter the amount of your expense");
+
+            Double amount = Double.parseDouble(strAmount);
+
+            Expense expense = new Expense(name, amount);
+
+            expenses.addExpense(expense);
+            JOptionPane.showMessageDialog(null, "Added Expense Successfully!", "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Add Expense", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: removes an income from the list of incomes
     public void removeIncome() {
-        //stub
+        try {
+            String name = JOptionPane.showInputDialog("Please enter the title of the income you'd like to remove");
+            String strAmount = JOptionPane.showInputDialog("Please enter the amount of the income");
+
+            Double amount = Double.parseDouble(strAmount);
+
+            incomes.removeIncome(name, amount);
+            JOptionPane.showMessageDialog(null, "Removed Income Successfully!", "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Remove Income", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: removes an expense from the list of expenses
     public void removeExpense() {
-        //stub
+        try {
+            String name = JOptionPane.showInputDialog("Please enter the title of the expense you'd like to remove");
+            String strAmount = JOptionPane.showInputDialog("Please enter the amount of the expense");
+
+            Double amount = Double.parseDouble(strAmount);
+
+            expenses.removeExpense(name, amount);
+            JOptionPane.showMessageDialog(null, "Removed Expense Successfully!", "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Remove Expense", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // REQUIRES: incomes > 0
     // MODIFIES: this
     // EFFECTS: Changes the income name or amount based on user preferences.
     public void modifyIncome() {
-        //stub
+        try {
+            String choice = JOptionPane
+                    .showInputDialog("Would you like to modify by title (input T) or by amount (input A)?");
+
+            if (choice.equals("T")) {
+                String name = JOptionPane.showInputDialog("Which title would you like to modify?");
+                String updatedName = JOptionPane.showInputDialog("Enter updated title:");
+
+                incomes.modifyIncomeName(name, updatedName);
+            }
+
+            if (choice.equals("A")) {
+                String strAmount = JOptionPane.showInputDialog("Which amount would you like to modify?");
+                Double amount = Double.parseDouble(strAmount);
+
+                String strUpdatedAmt = JOptionPane.showInputDialog("Enter updated amount:");
+                Double updatedAmount = Double.parseDouble(strUpdatedAmt);
+
+                incomes.modifyIncomeAmount(amount, updatedAmount);
+            }
+            JOptionPane.showMessageDialog(null, "Modified Successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Modify", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // REQUIRES: expenses > 0
     // MODIFIES: this
     // EFFECTS: Changes the expense name or amount based on user preferences.
     public void modifyExpense() {
-        //stub
+        try {
+            String choice = JOptionPane
+                    .showInputDialog("Would you like to modify by title (input T) or by amount (input A)?");
+
+            if (choice.equals("T")) {
+                String name = JOptionPane.showInputDialog("Which title would you like to modify?");
+                String updatedName = JOptionPane.showInputDialog("Enter updated title:");
+
+                expenses.modifyExpenseName(name, updatedName);
+            }
+
+            if (choice.equals("A")) {
+                String strAmount = JOptionPane.showInputDialog("Which amount would you like to modify?");
+                Double amount = Double.parseDouble(strAmount);
+
+                String strUpdatedAmt = JOptionPane.showInputDialog("Enter updated amount:");
+                Double updatedAmount = Double.parseDouble(strUpdatedAmt);
+
+                expenses.modifyExpenseAmount(amount, updatedAmount);
+            }
+            JOptionPane.showMessageDialog(null, "Modified Successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Modify", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
+    // Referrenced StackOverflow
+    // (https://stackoverflow.com/questions/5255726/display-list-on-a-jframe)
+    // (https://stackoverflow.com/questions/3269516/java-arraylists-into-jlist)
     // EFFECTS: Displays the list of incomes.
     public void viewIncomesList() {
-        //stub
+        JFrame f = new JFrame("List of Incomes");
+        JList<Income> viewIncomes = new JList<>(incomes.getIncomes().toArray(new Income[0]));
+        f.add(viewIncomes);
+        f.pack();
+        f.setSize(500, 500);
+        f.setVisible(true);
     }
 
     // EFFECTS: Displays the list of expenses.
     public void viewExpensesList() {
-        //stub
+        JFrame f = new JFrame("List of Expenses");
+        JList<Expense> viewExpenses = new JList<>(expenses.getExpenses().toArray(new Expense[0]));
+        f.add(viewExpenses);
+        f.pack();
+        f.setSize(500, 500);
+        f.setVisible(true);
     }
 
     // EFFECTS: Saves the program to File
     public void saveProgram() {
-        //stub
+        try {
+            saveIncomes();
+            saveExpenses();
+            JOptionPane.showMessageDialog(null, "Saved Successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Write to File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // Effects: Reloads progress to program
     public void reloadProgress() {
-        //stub
+        try {
+            reloadIncomes();
+            reloadExpenses();
+            JOptionPane.showMessageDialog(null, "Read Successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Read File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // EFFECTS: saves the expenses to file
     private void saveExpenses() {
-        //stub
+        try {
+            jsonWriterExp.open();
+            jsonWriterExp.writeExpenses(expenses);
+            jsonWriterExp.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Write to File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // EFFECTS: saves the incomes to file
     private void saveIncomes() {
-        //stub
+        try {
+            jsonWriterInc.open();
+            jsonWriterInc.writeIncomes(incomes);
+            jsonWriterInc.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Write to File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: loads expenses from file
     private void reloadExpenses() {
-        //stub
+        try {
+            expenses = jsonReaderExp.readExpenses();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Read File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: loads incomes from file
     private void reloadIncomes() {
-        //stub
+        try {
+            incomes = jsonReaderInc.readIncomes();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to Read File", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    //EFFECTS: view data in a picture format (working on it still)
-    public void viewData(){
-        //stub
+    // EFFECTS: view data in a picture format (working on it still)
+    // Referrenced:
+    // https://medium.com/@michael71314/java-lesson-22-inserting-images-onto-the-jframe-a0a0b6540cca
+    public void viewLogo() {
+        Frame frame = new JFrame("WealthHealth Logo");
+        frame.setSize(600, 600);
+        JLabel label = new JLabel();
+        label.setIcon(new ImageIcon(new ImageIcon(
+                "C:\\Users\\Intikhab\\Desktop\\Jaza\\UBC\\CPSC 210\\PROJECT\\ProjectStarter\\images\\Logo.PNG")
+                .getImage()
+                .getScaledInstance(300, 300, Image.SCALE_SMOOTH)));
+        frame.add(label);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

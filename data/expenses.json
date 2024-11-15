@@ -1,4 +1,14 @@
-{"ExpensesList": [{
-    "amount": 3213,
-    "name": "exzp"
-}]}
+{"ExpensesList": [
+    {
+        "amount": 300,
+        "name": "Ate"
+    },
+    {
+        "amount": 32000,
+        "name": "Bigback Dinner Core"
+    },
+    {
+        "amount": 20000,
+        "name": "Bigback round 2 "
+    }
+]}

@@ -43,6 +43,6 @@ public class Income implements Writable {
 
     @Override
     public String toString() {
-        return "Income: " + getIncomeName() + ": $" + getIncomeAmount();
+        return getIncomeName() + ": $" + getIncomeAmount();
     }
 }
