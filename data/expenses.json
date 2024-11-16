@@ -1,14 +1,10 @@
 {"ExpensesList": [
     {
+        "amount": 5,
+        "name": "buy drugs"
+    },
+    {
         "amount": 300,
-        "name": "Ate"
-    },
-    {
-        "amount": 32000,
-        "name": "Bigback Dinner Core"
-    },
-    {
-        "amount": 20000,
-        "name": "Bigback round 2 "
+        "name": "zayn tour"
     }
 ]}

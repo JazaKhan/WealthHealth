@@ -42,6 +42,7 @@ public class Expense implements Writable {
         return json;
     }
 
+    //Override toString method to assist in viewing list in JSwing GUI
     @Override
     public String toString() {
         return getExpenseName() + ": $" + getExpenseAmount();

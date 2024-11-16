@@ -41,6 +41,7 @@ public class Income implements Writable {
         return json;
     }
 
+    //Override toString method to assist in viewing list in JSwing GUI
     @Override
     public String toString() {
         return getIncomeName() + ": $" + getIncomeAmount();

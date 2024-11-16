@@ -14,6 +14,7 @@ import persistence.JsonWriter;
 //Referred to C3-LectureLabStarter, AlarmSystem, geeksforgeeks (https://www.geeksforgeeks.org/introduction-to-java-swing/)
 //Cottrell Coding (https://www.youtube.com/watch?v=WOooJ_165xY&ab_channel=CottrellCoding)
 //Telusko (https://www.youtube.com/watch?v=Xh0HZJ3Gd2c&ab_channel=Telusko)
+//StackOverflow (https://stackoverflow.com/questions/9698359/setbackgroundnew-color-in-java-does-not-understand-the-given-rgb-value)
 
 //Represents the main window in which the WealthHealth App is run
 public class FinanceManagerGUI extends JFrame {
@@ -28,6 +29,7 @@ public class FinanceManagerGUI extends JFrame {
     private JsonWriter jsonWriterInc;
     private JsonReader jsonReaderInc;
 
+    // Initializes files and Manages Program Execution
     public FinanceManagerGUI() {
         jsonWriterExp = new JsonWriter(EXPENSES_FILE);
         jsonReaderExp = new JsonReader(EXPENSES_FILE);
@@ -38,13 +40,13 @@ public class FinanceManagerGUI extends JFrame {
         screen();
     }
 
-    // EFFECTS: Manages data and program execution
+    // EFFECTS: Initializes Income and Expense Lists
     public void init() {
         this.incomes = new IncomesList();
         this.expenses = new ExpensesList();
     }
 
-    // EFFECTS: Sets up GUI screen
+    // EFFECTS: Sets up and Manage GUI Screen
     public void screen() {
         setSize(800, 600);
         setTitle("WealthHealth");
@@ -60,10 +62,10 @@ public class FinanceManagerGUI extends JFrame {
         add(buttons, BorderLayout.SOUTH);
     }
 
-    // EFFECTS: Creates a header for the GUI Screen
+    // EFFECTS: Returns a JPanel header for the GUI Screen
     public JPanel header() {
         JPanel headerJPanel = new JPanel();
-        headerJPanel.setBackground(Color.CYAN);
+        headerJPanel.setBackground(new Color(152, 255, 168));
         Font font = new Font("Arial", Font.BOLD, 26);
         JLabel titleName = new JLabel("WealthHealth");
         titleName.setFont(font);
@@ -71,14 +73,23 @@ public class FinanceManagerGUI extends JFrame {
         return headerJPanel;
     }
 
-    // EFFECTS: Contains the centered content for the GUI Screen
+    // Referrenced Oracle Forums
+    // (https://forums.oracle.com/ords/apexds/post/how-to-center-a-jlabel-on-a-jframe-0912)
+    // EFFECTS: Manages and Returns the Centered content for the GUI Screen
     public JPanel center() {
-        JPanel transactionHistory = new JPanel();
-        transactionHistory.setBackground(Color.YELLOW);
+        JPanel transactionHistory = new JPanel(new GridBagLayout());
+        transactionHistory.setBackground(new Color(54, 69, 79));
+        JLabel label = new JLabel();
+        label.setIcon(new ImageIcon(new ImageIcon(
+                "C:\\Users\\Intikhab\\Desktop\\Jaza\\UBC\\CPSC 210\\PROJECT\\ProjectStarter\\images\\WEALTHHEALTH.png")
+                .getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
+        transactionHistory.add(label);
         return transactionHistory;
     }
 
-    // EFFECTS: Creates the buttons required
+    // EFFECTS: Creates the button bar, and the buttons required, and has them lead
+    // to appropriate methods/events
+    @SuppressWarnings("methodlength") // get approved by TA
     public JPanel buttons() {
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(3, 1, 3, 3));
@@ -353,9 +364,9 @@ public class FinanceManagerGUI extends JFrame {
         }
     }
 
-    // EFFECTS: view data in a picture format (working on it still)
     // Referrenced:
     // https://medium.com/@michael71314/java-lesson-22-inserting-images-onto-the-jframe-a0a0b6540cca
+    // EFFECTS: Displays App Logo in a picture format
     public void viewLogo() {
         Frame frame = new JFrame("WealthHealth Logo");
         frame.setSize(600, 600);

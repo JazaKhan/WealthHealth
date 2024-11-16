@@ -40,4 +40,9 @@ public class TestExpense {
         assertEquals(expenseTest.getExpenseName(), json.getString("name"));
         assertEquals(expenseTest.getExpenseAmount(), json.getDouble("amount"));
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Clothes: $300.0", expenseTest.toString());
+    }
 }

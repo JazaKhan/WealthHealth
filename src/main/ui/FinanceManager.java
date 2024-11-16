@@ -43,7 +43,6 @@ public class FinanceManager {
         }
     }
 
-    // REQUIRES: incomeName has a non-zero length.
     // EFFECTS: initializes fields (scanner, isProgramRunning, incomes, expenses)
     public void init() {
         this.scanner = new Scanner(System.in);

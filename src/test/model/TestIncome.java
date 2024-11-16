@@ -39,4 +39,9 @@ public class TestIncome {
         assertEquals(incomeTest.getIncomeName(), json.getString("name"));
         assertEquals(incomeTest.getIncomeAmount(), json.getDouble("amount"));
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Job 1: $3000.0", incomeTest.toString());
+    }
 }
