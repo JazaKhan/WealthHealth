@@ -1,10 +1,10 @@
 {"IncomesList": [
     {
-        "amount": 10000,
-        "name": "drugs"
+        "amount": 4000,
+        "name": "Engineer"
     },
     {
-        "amount": 90000,
-        "name": "ts"
+        "amount": 3000,
+        "name": "Author"
     }
 ]}

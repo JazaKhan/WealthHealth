@@ -1,10 +1,10 @@
 {"ExpensesList": [
     {
-        "amount": 5,
-        "name": "buy drugs"
-    },
-    {
         "amount": 300,
         "name": "zayn tour"
+    },
+    {
+        "amount": 10000,
+        "name": "bigback dinner yum"
     }
 ]}
